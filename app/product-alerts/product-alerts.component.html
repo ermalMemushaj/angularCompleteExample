@@ -1,0 +1,4 @@
+<p *ngIf="product.price > 700">
+  <!--on click call emit method of notify(evenEmitter instance) -->
+  <button (click)="notify.emit()">Notify Me</button>
+</p>

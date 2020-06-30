@@ -1,0 +1,22 @@
+<h2>Products</h2>
+<!--*ngFor-the <div> repeats for each product in the list.assign index in the array to the productId variable when iterating .-->
+<div *ngFor="let product of products; index as productId">
+  <h3>
+    <!-- Property binding [ ],lets you use the property value in a template expression. -->
+    <!--The RouterLink directive gives the router control over the anchor element.
+     In this case, the route/URL, contains one fixed segment, /products, while the final segment is variable.
+    -->
+    <a [title]="product.name + ' details'"  [routerLink]="['/products', productId]">{{ product.name }}</a>
+  </h3>
+  <!--if product has description,Interpolation {{ }}, renders a property's value as text-->
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <!--Event binding ( ),connecct to ts code-->
+  <button (click)="share()">Share</button>
+  <!--include the new component passing the product as parameter, use its selector like html-->
+  <!--bind the child component (notify )event to the onNotify() method of the father component.
+  -->
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+</div>
